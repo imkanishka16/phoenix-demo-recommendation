@@ -402,8 +402,21 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             opacity: 0;
             cursor: pointer;
+            z-index: 1; /* Ensure it stays above other elements */
+        }
+
+        /* Make the entire container trigger the file input */
+        .modern-upload {
+            position: relative;
+        }
+
+        .modern-upload > * {
+            position: relative;
+            z-index: 0; /* Ensure text and icon are below the input */
         }
 
         .modern-textarea {
@@ -631,7 +644,7 @@
                 <div class="select-counter" id="select-counter">0/4 items selected</div>
 
                 <label for="prompt">Enter Design Prompt</label>
-                <textarea class="modern-textarea" id="prompt" name="prompt" required placeholder="Describe your design vision (e.g., modern living room with selected items)"></textarea>
+                <textarea class="modern-textarea" id="prompt" name="prompt" required placeholder="Describe your design vision (e.g., Decorate this room by adding these table and chairs)"></textarea>
                 
                 <button type="submit" id="generate-btn">Generate Image</button>
                 <p class="error" id="design-error"></p>
@@ -880,7 +893,7 @@
             progressBar.textContent = "0%";
 
             const startTime = Date.now();
-            const estimatedDuration = 5000;
+            const estimatedDuration = 30000;
             updateProgressBar(startTime, estimatedDuration);
 
             const formData = new FormData(this);

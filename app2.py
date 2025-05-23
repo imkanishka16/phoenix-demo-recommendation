@@ -71,10 +71,11 @@ chain = LLMChain(llm=llm, prompt=prompt_template)
 # List of product images for interior design
 PRODUCT_IMAGES = [
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+1.png", "label": "FLO L PACK 1"},
-    {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+2.png", "label": "White Single Seat"},
+    {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+2.png", "label": "Button Laundry Basket L 46L"},
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+3.png", "label": "FLO L PACK 1"},
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+4.png", "label": "Chair Cambridge"},
-    {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+5.png", "label": "Chair Mint"},
+    {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/Seating-2025RUBY-ST+-+phoenix12.webp", "label": "Duo Chair"},
+    {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/Seating-2025-INDIK-BR-300x300+-+phoenix+11.webp", "label": "Chair Breeze"},
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+6.jpg", "label": "Deco Box"},
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+7.jpg", "label": "10L Storage Box-Coloured"},
     {"url": "https://honor-ai-video-gen.s3.ap-south-1.amazonaws.com/temp_img/phoenix+8.jpg", "label": "FLO L PACK 3"},
