@@ -50,7 +50,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port 80
-EXPOSE 80
+# EXPOSE 80
+EXPOSE 80 443
+
+# Command to run with SSL
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:443", "--timeout", "120", "--certfile=/etc/letsencrypt/live/phoenix-demo.enfection.com/fullchain.pem", "--keyfile=/etc/letsencrypt/live/phoenix-demo.enfection.com/privkey.pem", "app2:app"]
 
 # Command to run the application with increased timeout
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:80", "--timeout", "120", "app2:app"]
+# CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:80", "--timeout", "120", "app2:app"]
