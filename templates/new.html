@@ -597,6 +597,14 @@
             line-height: 20px;
             transition: width 0.1s ease;
         }
+
+        .time-take{
+            color: #666;
+            font-size: small;
+            text-align: center;
+            font-style: italic;
+            
+        }
     </style>
 </head>
 <body>
@@ -645,6 +653,7 @@
 
                 <label for="prompt">Enter Design Prompt</label>
                 <textarea class="modern-textarea" id="prompt" name="prompt" required placeholder="Describe your design vision (e.g., Decorate this room by adding these table and chairs)"></textarea>
+                <p class="time-take">(The response will take around 60s to be completed !!!)</p>
                 
                 <button type="submit" id="generate-btn">Generate Image</button>
                 <p class="error" id="design-error"></p>
