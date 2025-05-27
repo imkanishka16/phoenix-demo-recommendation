@@ -27,6 +27,7 @@
             align-items: center;
             min-height: 100vh;
             background-color: var(--bg-light);
+            position: relative;
         }
 
         .main-container {
@@ -598,12 +599,34 @@
             transition: width 0.1s ease;
         }
 
-        .time-take{
+        .time-take {
             color: #666;
             font-size: small;
             text-align: center;
             font-style: italic;
-            
+        }
+
+        /* Pop-up Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+            opacity: 0; /* Start hidden */
+            transform: translateY(-10px); /* Initial position for animation */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for showing */
+        }
+
+        .notification.visible {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* Slide into position */
         }
     </style>
 </head>
@@ -667,6 +690,9 @@
         </div>
     </div>
 
+    <!-- Notification Pop-up -->
+    <div id="notification" class="notification"></div>
+
     <script>
         const chatBox = document.getElementById("chat-box");
         const userInput = document.getElementById("user-input");
@@ -683,6 +709,7 @@
         const progressBar = document.getElementById("progress-bar");
         const roomImageInput = document.getElementById("room_image");
         const previewImage = document.getElementById("preview-image");
+        const notification = document.getElementById("notification");
         let chatHistory = [];
 
         // E-commerce Chatbot Functions
@@ -888,6 +915,16 @@
             }
         });
 
+        // Notification Click Handler
+        notification.addEventListener('click', () => {
+            // Hide the notification
+            notification.classList.remove('visible');
+            notification.style.display = 'none';
+            // Navigate to Visualizer Tool
+            designSection.style.display = "block";
+            ecommerceSection.style.display = "none";
+        });
+
         document.getElementById('edit-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -920,6 +957,10 @@
                 if (response.ok && data.image) {
                     resultImage.src = `data:image/png;base64,${data.image}`;
                     resultImage.style.display = "block";
+                    // Show corner pop-up notification
+                    notification.textContent = "Image generation completed successfully! Click to view.";
+                    notification.style.display = "block";
+                    notification.classList.add('visible'); // Trigger the fade-in animation
                 } else {
                     designError.textContent = data.error || "An error occurred while generating the image.";
                 }
