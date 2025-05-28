@@ -229,13 +229,11 @@
 
         input[type="text"] {
             flex: 1;
-            /* padding: 12px 15px; */
             padding: 21px 220px 21px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid rgb(166, 162, 162);
             border-radius: 20px;
             font-size: 1rem;
             transition: border-color 0.2s, box-shadow 0.2s;
-            border: 1px solid rgb(166, 162, 162);
         }
 
         input[type="text"]:focus {
@@ -246,43 +244,33 @@
 
         #submit-btn {
             padding: 8px 15px;
-            /* background-color: var(--primary); */
             background-color: #ffffff;
-            color: #fff;
-            border: none;
-            /* border-radius: 20px; */
-            border-radius: 10px; /* Make it circular */
+            color: black;
+            border: 1px solid rgb(166, 162, 162);
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.2s;
             font-weight: 500;
-            color: black;
-            border: 1px solid rgb(166, 162, 162);
-            position: absolute; /* Position absolutely */
-            right: 40px; /* Position from right */
-
+            position: absolute;
+            right: 40px;
         }
-        
 
         #submit-btn:hover {
             background-color: #d0ccc9;
         }
 
         #go-to-design-btn {
-            /* background-color: var(--primary); */
             background-color: #ffffff;
-            color: white;
-            /* padding: 12px 24px; */
+            color: black;
             padding: 8px 12px;
-            border: none;
+            border: 1px solid rgb(166, 162, 162);
             border-radius: 20px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 500;
             transition: background-color 0.2s;
-            color: black;
-            border: 1px solid rgb(166, 162, 162);
-            position: absolute; /* Position absolutely */
-            right: 95px; /* Position from right */
+            position: absolute;
+            right: 95px;
         }
 
         #go-to-design-btn:hover {
@@ -335,7 +323,7 @@
             flex-wrap: nowrap;
             overflow-x: auto;
             overflow-y: hidden;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             -ms-overflow-style: none;
         }
 
@@ -348,7 +336,7 @@
             cursor: pointer;
             transition: all 0.2s;
             font-size: 0.9em;
-            color: gray ;
+            color: gray;
             flex-shrink: 0;
             white-space: nowrap;
         }
@@ -447,37 +435,16 @@
             left: 0;
             opacity: 0;
             cursor: pointer;
-            z-index: 1; /* Ensure it stays above other elements */
+            z-index: 1;
         }
 
-        /* Make the entire container trigger the file input */
         .modern-upload {
             position: relative;
         }
 
         .modern-upload > * {
             position: relative;
-            z-index: 0; /* Ensure text and icon are below the input */
-        }
-
-        .modern-textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            background-color: #ffffff;
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.6;
-            resize: vertical;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            min-height: 100px;
-        }
-
-        .modern-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(255, 101, 0, 0.2);
+            z-index: 0;
         }
 
         .products-grid {
@@ -619,6 +586,31 @@
             border-radius: 8px;
         }
 
+        /* Download Button Styles */
+        #download-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: none;
+            margin: 15px auto;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        #download-btn i {
+            margin-right: 8px;
+        }
+
+        #download-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
         /* Progress Bar Styles */
         .progress-bar-container {
             width: 100%;
@@ -639,13 +631,6 @@
             transition: width 0.1s ease;
         }
 
-        .time-take {
-            color: #666;
-            font-size: small;
-            text-align: center;
-            font-style: italic;
-        }
-
         /* Pop-up Notification Styles */
         .notification {
             position: fixed;
@@ -658,15 +643,15 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: none;
-            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
-            opacity: 0; /* Start hidden */
-            transform: translateY(-10px); /* Initial position for animation */
-            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for showing */
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .notification.visible {
-            opacity: 1; /* Fully visible */
-            transform: translateY(0); /* Slide into position */
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -715,10 +700,6 @@
                 </div>
                 <div class="select-counter" id="select-counter">0/4 items selected</div>
 
-                <label for="prompt">Enter Design Prompt</label>
-                <textarea class="modern-textarea" id="prompt" name="prompt" required placeholder="Describe your design vision (e.g., Decorate this room by adding these table and chairs)"></textarea>
-                <p class="time-take">(The response will take around 60s to be completed !!!)</p>
-                
                 <button type="submit" id="generate-btn">Generate Image</button>
                 <p class="error" id="design-error"></p>
             </form>
@@ -726,6 +707,7 @@
                 <div class="progress-bar" id="progress-bar">0%</div>
             </div>
             <img id="result-image" class="result-image" style="display: none;">
+            <a id="download-btn" href="#" download="designed_room.png"><i class="fas fa-download"></i> Download Image</a>
             <button id="back-to-chat-btn">Back to Chat</button>
         </div>
     </div>
@@ -743,6 +725,7 @@
         const designSection = document.getElementById("design-section");
         const designError = document.getElementById("design-error");
         const resultImage = document.getElementById("result-image");
+        const downloadBtn = document.getElementById("download-btn");
         const generateBtn = document.getElementById("generate-btn");
         const selectCounter = document.getElementById("select-counter");
         const progressBarContainer = document.getElementById("progress-bar-container");
@@ -942,7 +925,6 @@
                 reader.onload = function(e) {
                     previewImage.src = e.target.result;
                     previewImage.style.display = 'block';
-                    // Hide upload text and icon when image is loaded
                     document.querySelector('.upload-text').style.display = 'none';
                     document.querySelector('.upload-icon').style.display = 'none';
                 };
@@ -957,10 +939,8 @@
 
         // Notification Click Handler
         notification.addEventListener('click', () => {
-            // Hide the notification
             notification.classList.remove('visible');
             notification.style.display = 'none';
-            // Navigate to Visualizer Tool
             designSection.style.display = "block";
             ecommerceSection.style.display = "none";
         });
@@ -984,8 +964,10 @@
             updateProgressBar(startTime, estimatedDuration);
 
             const formData = new FormData(this);
+            formData.set('prompt', 'decorate this room by adding only given products');
             designError.textContent = "";
             resultImage.style.display = "none";
+            downloadBtn.style.display = "none"; // Hide download button initially
 
             try {
                 const response = await fetch("/design", {
@@ -997,10 +979,12 @@
                 if (response.ok && data.image) {
                     resultImage.src = `data:image/png;base64,${data.image}`;
                     resultImage.style.display = "block";
-                    // Show corner pop-up notification
+                    // Show download button and set its href to the image source
+                    downloadBtn.href = resultImage.src;
+                    downloadBtn.style.display = "block";
                     notification.textContent = "Image generation completed successfully! Click to view.";
                     notification.style.display = "block";
-                    notification.classList.add('visible'); // Trigger the fade-in animation
+                    notification.classList.add('visible');
                 } else {
                     designError.textContent = data.error || "An error occurred while generating the image.";
                 }
