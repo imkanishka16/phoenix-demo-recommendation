@@ -964,7 +964,7 @@
             updateProgressBar(startTime, estimatedDuration);
 
             const formData = new FormData(this);
-            formData.set('prompt', 'decorate this room by adding only given products');
+            formData.set('prompt', "Add the selected furniture items to the uploaded room photo. Begin by identifying and removing any existing furniture or obstructions to create a clean and empty space. Next, place the selected furniture items into the cleared room, ensuring they are scaled appropriately, aligned with the room's perspective, and integrated with realistic lighting and shadows to match the original image seamlessly.");
             designError.textContent = "";
             resultImage.style.display = "none";
             downloadBtn.style.display = "none"; // Hide download button initially
