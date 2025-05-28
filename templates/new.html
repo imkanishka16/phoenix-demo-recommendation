@@ -224,15 +224,18 @@
             background-color: var(--bg-white);
             border-top: 1px solid #eee;
             align-items: center;
+            position: relative;
         }
 
         input[type="text"] {
             flex: 1;
-            padding: 12px 15px;
+            /* padding: 12px 15px; */
+            padding: 21px 220px 21px 15px;
             border: 1px solid #ddd;
-            border-radius: 24px;
+            border-radius: 20px;
             font-size: 1rem;
             transition: border-color 0.2s, box-shadow 0.2s;
+            border: 1px solid rgb(166, 162, 162);
         }
 
         input[type="text"]:focus {
@@ -242,34 +245,61 @@
         }
 
         #submit-btn {
-            padding: 12px 24px;
-            background-color: var(--primary);
+            padding: 8px 15px;
+            /* background-color: var(--primary); */
+            background-color: #ffffff;
             color: #fff;
             border: none;
-            border-radius: 24px;
+            /* border-radius: 20px; */
+            border-radius: 10px; /* Make it circular */
             cursor: pointer;
             transition: background-color 0.2s;
             font-weight: 500;
+            color: black;
+            border: 1px solid rgb(166, 162, 162);
+            position: absolute; /* Position absolutely */
+            right: 40px; /* Position from right */
+
         }
+        
 
         #submit-btn:hover {
-            background-color: var(--primary-dark);
+            background-color: #d0ccc9;
         }
 
         #go-to-design-btn {
-            background-color: var(--primary);
+            /* background-color: var(--primary); */
+            background-color: #ffffff;
             color: white;
-            padding: 12px 24px;
+            /* padding: 12px 24px; */
+            padding: 8px 12px;
             border: none;
-            border-radius: 24px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 500;
             transition: background-color 0.2s;
+            color: black;
+            border: 1px solid rgb(166, 162, 162);
+            position: absolute; /* Position absolutely */
+            right: 95px; /* Position from right */
         }
 
         #go-to-design-btn:hover {
-            background-color: var(--primary-dark);
+            background-color: #d0ccc9;
+        }
+
+        #go-to-design-btn::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgcng9IjIiIHJ5PSIyIi8+PGNpcmNsZSBjeD0iOC41IiBjeT0iOC41IiByPSIxLjUiLz48cG9seWxpbmUgcG9pbnRzPSI5LDIxIDE1LDE1IDIxLDIxIi8+PC9zdmc+');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 6px;
+            filter: opacity(0.7);
+            vertical-align: middle;
         }
 
         #back-to-chat-btn {
@@ -299,18 +329,28 @@
         .suggestions {
             padding: 10px 20px 20px;
             text-align: center;
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;
         }
 
         .suggestion-chip {
             display: inline-block;
             padding: 8px 16px;
             margin: 4px;
-            background-color: #ffe6cc;
+            background-color: #d7d5d2;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 0.9em;
-            color: var(--text);
+            color: gray ;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .suggestion-chip:hover {
@@ -638,15 +678,15 @@
                 <h2 class="chat-title"><i class="fas fa-spa"></i> Phoenix Helper: Smart Assistant</h2>
             </div>
             <div id="chat-box"></div>
-            <div class="input-container">
-                <input id="user-input" type="text" placeholder="Ask about our products or company...">
-                <button id="submit-btn">Send</button>
-                <button id="go-to-design-btn">🛠</button>
-            </div>
             <div class="suggestions">
                 <div class="suggestion-chip">I am looking for a chair under 12,000/-</div>
                 <div class="suggestion-chip">What are the storage solutions you have?</div>
                 <div class="suggestion-chip">Hi do you have shoe racks?</div>
+            </div>
+            <div class="input-container">
+                <input id="user-input" type="text" placeholder="Ask about our products or company...">
+                <button id="submit-btn">➤</button>
+                <button id="go-to-design-btn" title="Click to visualize and design your space">Visualize</button>
             </div>
         </div>
 
@@ -940,7 +980,7 @@
             progressBar.textContent = "0%";
 
             const startTime = Date.now();
-            const estimatedDuration = 30000;
+            const estimatedDuration = 55000;
             updateProgressBar(startTime, estimatedDuration);
 
             const formData = new FormData(this);
